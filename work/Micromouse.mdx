@@ -1,0 +1,218 @@
+---
+title: "Micromouse 🐭💡"
+summary: "Autonomer Labyrinth-Roboter mit Sensorsteuerung, PD-Regelung und Maze-Solving-Algorithmen – alles handcoded."
+
+publishedAt: "2023-04-08"
+updatedAt: "2023-08-10"
+readingTime: "5 min"
+
+categories:
+  - "Robotics"
+  - "Embedded Systems"
+  - "AI"
+
+tag:
+  - "Micromouse"
+  - "Maze Solving"
+  - "PD Control"
+  - "C++"
+  - "Microcontroller"
+
+keywords:
+  - "Autonomer Roboter"
+  - "Micromouse AI"
+  - "Maze Solving Algorithm"
+  - "PD Steuerung"
+  - "Embedded Entwicklung"
+
+status: "published"
+
+images:
+  - "/images/projects/Micromouse/Micromouse1.jpeg"
+  - "/images/projects/Micromouse/Micromouse2.jpeg"
+  - "/images/projects/Micromouse/Micromouse3.jpeg"
+  - "/images/projects/Micromouse/Micromouse4.jpeg"
+  - "/images/projects/Micromouse/Micromouse5.jpeg"
+
+team:
+  - name: "Aland Baban"
+    role: "Full Stack Developer"
+    avatar: "/images/avatar.jpg"
+    github: "https://github.com/amariwan"
+---
+
+# Micromouse 🐭💡
+
+**Ein Mini-Roboter mit maximalem Ehrgeiz – und mindestens genauso vielen Bugs.**
+
+Micromouse ist ein Wettbewerb, bei dem kleine autonome Roboter – liebevoll „Mäuse“ genannt – ein 16×16-Zellen großes Labyrinth ganz ohne Hilfe durchqueren. Das Ziel: Schnellstmöglich vom Start ins Zentrum.
+
+Jede Zelle misst 180 mm, die Wände sind 50 mm hoch. Klingt easy?
+
+> "Wie schwer kann’s sein?" – 300 Stunden später...
+
+## 🧠 Was muss so eine Maus können?
+
+- Wände erkennen (IR-Sensoren in alle Richtungen – Batman wäre neidisch)
+- Wissen, wo sie ist (ohne GPS oder Google Maps)
+- Eine Karte vom Labyrinth bauen
+- Den kürzesten Pfad zum Ziel finden
+- Alles möglichst schnell, effizient – und ohne sich selbst umzubringen
+
+## 🧰 Mein Part: Full Stack Roboter-Dompteur
+
+Ich war der Typ, der alles programmiert hat. Low-Level-Magic bis zur Maze-Logik. Vom ersten ADC-Wert bis zur finalen Kurvenfahrt.
+
+## 🔌 Sensoren & ADC
+
+Erstmal hab ich IR-Sensoren angebunden – für Wände, die sich _nicht_ selbst melden.
+
+```c
+void adc_init() {
+    ADMUX  = (1 << REFS0);
+    ADCSRA = (1 << ADEN) | (1 << ADPS1) | (1 << ADPS0);
+}
+
+uint16_t read_adc(uint8_t channel) {
+    ADMUX = (ADMUX & 0xF0) | (channel & 0x0F);
+    ADCSRA |= (1 << ADSC);
+    while (ADCSRA & (1 << ADSC));
+    return ADC;
+}
+```
+
+> ADC: “Ich sehe was, was du nicht siehst – und es ist... eine Wand.”
+
+## ⚙️ Motorsteuerung mit PWM
+
+Zwei DC-Motoren, ein Motortreiber – und die Hoffnung, dass nichts abraucht.
+
+```c
+void pwm_init() {
+    DDRD |= (1 << PD6) | (1 << PD5);
+    TCCR0A = (1 << COM0A1) | (1 << COM0B1) | (1 << WGM01) | (1 << WGM00);
+    TCCR0B = (1 << CS01);
+}
+
+void set_motor_speed(uint8_t left, uint8_t right) {
+    OCR0A = left;
+    OCR0B = right;
+}
+```
+
+> PWM: Die Kunst, Motoren dazu zu bringen, _genau so schnell_ zu drehen wie du willst – und _nicht schneller als dein Akku verkraftet_.
+
+## 🎯 PD-Regelung – Geradeaus ist auch eine Richtung
+
+Ohne Regelung fuhr die Maus wie betrunken durch den Parcours. Mit PD-Controller blieb sie auf Spur:
+
+```c
+int16_t pd_controller(int16_t error) {
+    static int16_t prev_error = 0;
+    const int16_t Kp = 8;
+    const int16_t Kd = 4;
+
+    int16_t derivative = error - prev_error;
+    prev_error = error;
+
+    return (Kp * error) + (Kd * derivative);
+}
+```
+
+> Technisch korrekt, gefühlt wie Power-Steering für Roboter.
+
+## 🧭 Maze-Solving: Right-Wall-Follower
+
+Einfach, effektiv, funktioniert meistens:
+
+```c
+void follow_right_wall() {
+    uint16_t front = read_adc(0);
+    uint16_t right = read_adc(1);
+    uint16_t left  = read_adc(2);
+
+    if (right > 200) {
+        if (front > 200) {
+            turn_left();
+        } else {
+            drive_forward();
+        }
+    } else {
+        turn_right();
+    }
+}
+```
+
+> Logik-Level: „Ich halt mich rechts, Bruder.“ 🐒
+
+## 🚗 Bewegungsfunktionen
+
+Basic Manöver, aber solide. Wenn man weiß, wie’s sich dreht, fährt man besser.
+
+```c
+void drive_forward() {
+    set_motor_speed(200, 200);
+}
+
+void turn_left() {
+    set_motor_speed(100, 200);
+    _delay_ms(300);
+}
+
+void turn_right() {
+    set_motor_speed(200, 100);
+    _delay_ms(300);
+}
+```
+
+> Delay ist kein echtes Timing – aber hey, es funktioniert (meistens).
+
+## 🔁 Main Loop
+
+Der Loop, in dem alles passiert. Nicht hübsch, aber effektiv.
+
+```c
+int main(void) {
+    adc_init();
+    pwm_init();
+
+    while (1) {
+        follow_right_wall();
+    }
+}
+```
+
+> "While(1)": Wo Embedded-Leute leben. Und sterben. Und debuggen.
+
+## 🏁 Ergebnis: Sieger der Herzen (und des Hochschulwettbewerbs)
+
+Unsere Maus war nicht nur schnell, sie war präzise. Sie war **die schnellste Maus im Rennen** – trotz minimalistischer Strategie.
+
+✅ Kein Crash
+✅ Kein Kabelbrand
+✅ Kein Verirren
+✅ Viel Applaus (und ein bisschen Stolz)
+
+## 🧪 Nächstes Level (a.k.a. Das Upgrade, wenn du’s ernst meinst)
+
+- Flood-Fill für smarteres Mapping
+- Gyro für Drehkontrolle
+- Encoder für echte Distanzmessung
+- OLED-Display: „Wall ahead! Panic now.“
+- Bluetooth/UART Logging
+
+## 📸 Projektgalerie
+
+![Micromouse](/images/projects/Micromouse/Micromouse.mp4)
+
+> Hier könnte dein Roboter stylish durchs Maze fahren.
+
+## 💬 Fazit
+
+Micromouse ist kein Anfängerprojekt. Es ist Embedded-Ritterschlag.
+Wenn du’s baust, lernst du alles – und verlierst vielleicht deinen Verstand kurzzeitig beim Debuggen.
+
+Aber dann siehst du ihn fahren. Selbstständig. Im Ziel.
+Und denkst dir:
+
+> **„Du bist meine kleine, nervige, piepende Schöpfung – und ich bin stolz auf dich.“**

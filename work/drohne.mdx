@@ -1,0 +1,134 @@
+---
+title: "Autonome Drohne – DIY trifft auf KI, OpenCV und DJI"
+summary: "Ich hab mir eine eigene Drohne gebaut. Nicht zum Rumfliegen. Sondern zum Denken. Mit KI, Objekterkennung, GPS und dem Willen zur Autonomie. HAL 9000 im Miniformat – aber freundlich."
+
+publishedAt: "2018-02-18"
+updatedAt: "2018-06-01"
+readingTime: "5 min"
+
+categories:
+  - "IoT"
+  - "Computer Vision"
+  - "AI"
+  - "Drohne"
+
+tag:
+  - "OpenCV"
+  - "Drohne"
+  - "DIY"
+  - "GPS"
+  - "Autonom"
+
+keywords:
+  - "Autonome Drohne"
+  - "OpenCV"
+  - "GPS Tracking"
+  - "Objekterkennung"
+  - "Drohnen-KI"
+  - "DJI"
+
+status: "published"
+
+image: "/images/projects/drohne.jpg"
+
+team:
+  - name: "Aland Baban"
+    role: "Full Stack Developer, Hobby-Roboter-Vater"
+    avatar: "/images/avatar.jpg"
+    github: "https://github.com/amariwan"
+---
+
+## 👀 TL;DR
+
+Drohne? Selbst gebaut.
+Flugcontroller? DJI.
+KI? YOLOv2 + SSD MobileNet.
+Rechenpower? Erst Pi, dann Jetson.
+Ziel? Eine Drohne, die sieht, denkt und _selbst entscheidet_.
+Endboss? Rechenleistung vs. Echtzeitfähigkeit.
+
+## 🧠 Warum ich das gemacht hab
+
+Ich wollte mal wissen: Wie weit kommt man eigentlich mit Open-Source, etwas Lötzinn und einem YouTube-Algorithmus, der einem nachts um 2 "How to build your own AI drone"-Videos vorschlägt?
+
+Spoiler: Man kommt ziemlich weit.
+
+Mein Ziel war nicht nur eine Drohne zu bauen, die irgendwie fliegt – sondern eine, die mitdenkt. Also Dinge erkennt, Entscheidungen trifft und selbstständig Kursänderungen vornimmt.
+
+> “Build cool stuff first, debug later.” – Ich, 2018
+
+## 🛠️ Hardware-Setup aka „Was steckt drin?“
+
+Hier wurde geschraubt, geflucht, gelötet – und am Ende flog das Ding tatsächlich. Und zwar nicht ins nächste Fenster. 🎉
+
+### ✨ Komponentenliste:
+
+- **Frame:** 450er Carbon-Quadcopter – stabil, leicht, und sieht böse aus
+- **Motoren & ESCs:** 4× 920KV Brushless mit 30A ESCs – _we got power_
+- **Flugcontroller:** DJI Naza-M V2 + GPS – das Hirn für sauberes Fliegen
+- **Akku:** 4S LiPo, 5200mAh – Flugzeit ≈ genug für Panik & Begeisterung
+- **Onboard-Computer:** Raspberry Pi 3 → später Jetson Nano (_weil YOLOv2 den Pi grillt_)
+- **Sensorik:** HC-SR04 Ultraschallsensoren für Distanz – _basic but effective_
+- **Kamera:** Pi Cam V2 (8MP) – “Ich sehe was, was du nicht siehst…”
+
+## 🧠 KI, Baby!
+
+Die eigentliche „Magie“ passiert nicht im Flugcontroller, sondern in der Software. Und ja – die Drohne sieht was. Und denkt (so halb).
+
+### 👓 Computer Vision Stack:
+
+- **OpenCV**: für Farb- & Kantenerkennung, Motion Detection & Nachverfolgung
+- **TensorFlow 1.x**: YOLOv2 → später SSD MobileNet (leichter, schneller)
+- **Python**: Der nervöse Dirigent, der alles orchestriert
+- **Serielle Kommunikation**: damit der Pi dem DJI sagt: "Dude, nach links!"
+
+> 📷 Kamera erkennt: Person
+> 🧠 Drohne denkt: _Follow-Modus aktiviert_
+> 🕹️ DJI sagt: „Roger that“
+> ✈️ Action.
+
+## 🧠 Die Drohne kann:
+
+✅ Objekte im Livebild erkennen (Personen, Farben, Formen)
+✅ Zielen folgen (Follow-Me-Modus)
+✅ Hindernissen ausweichen (Ultraschall-Ping Pong)
+✅ _Situativ_ Entscheidungen treffen – wie "oh ein Baum – Kurswechsel"
+
+---
+
+## 😅 Technische Stolpersteine (und wie ich fast den Pi gekocht hab)
+
+### 🔥 Rechenleistung:
+
+- YOLOv2 auf Raspberry Pi? 🤡 Nope.
+- Lösung: Modell komprimieren & Jetson Nano benutzen → _Problem gelöst, Lüfter angeschrien._
+
+### 🐢 Latenz:
+
+- Kamera → Modell → Reaktion = Delay = Drohne fliegt in die Hecke.
+- Lösung: Async-Processing, Timings tunen, Modelle optimieren.
+
+### 🛰️ GPS-Probleme:
+
+- Besonders in Bodennähe war das GPS zu grob für präzise Reaktionen.
+- Lösung: Kompensation mit Sensorik + Kameraauswertung
+
+> _“Warum steht die Drohne? GPS dachte, sie sei in Kanada.”_
+
+## 📌 Fazit – Was ich gelernt hab:
+
+- KI in Embedded-Systemen = 🧠 + 🔋 + 🤬
+- Mit etwas Geduld und einem guten Plan kriegt man eine _autonom agierende_ Drohne gebaut
+- Open Source + Maker-Mentalität = mächtige Kombination
+
+Ich hab’s nicht nur gebaut – ich hab’s auch verstanden.
+Und es hat irre Spaß gemacht.
+Selbst wenn mein WLAN manchmal dachte, die Drohne sei ein neuer Client 😅
+
+## 🧩 Nächste Schritte?
+
+Falls dich das Thema kickt:
+→ Baue gerade an einem neuen Modell mit SLAM, Lidar und ROS 2.
+→ Mehr dazu bald auf meinem Blog 🚀
+
+_“In a world full of drones... be the one that thinks.”_ 🤖
