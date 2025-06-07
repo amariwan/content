@@ -33,7 +33,7 @@ team:
     github: "https://github.com/amariwan"
 ---
 
-## Einführung test
+## Einführung
 
 Datenschutz und IT-Sicherheit sind zentrale Säulen moderner Webanwendungen – insbesondere bei sozialen Netzwerken, die sensible Nutzerdaten verarbeiten. Dieser Artikel untersucht, wie ein Startup diese Herausforderungen in der frühen Entwicklungsphase eines projekt-, aktivitäts- und
 zeitmanagementorientierten sozialen Netzwerks meistert. Im Fokus stehen die Implementierung von OAuth2, serviceorientierte Architekturen (SOA) und die Einhaltung deutscher sowie europäischer Datenschutzvorgaben.
@@ -108,7 +108,70 @@ Das Autorisierungsmodul ist ein eigenständiger Microservice, der Token generier
 
 Externe Entwickler registrieren ihre Anwendungen über ein Entwicklerportal. Dabei erhalten sie eine **app_id** und definieren erlaubte Datenzugriffe. Diese Informationen werden in einer separaten Datenbank isoliert gespeichert.
 
-**Beispieltabellen:** ![App Tabelle](/images/foliage/tab1.png) ![Datenfreigabe Tabelle](/images/foliage/tab2.png) ![Datenstruktur Tabelle](/images/foliage/tab3.png)
+**Beispieltabellen:**
+
+<Table
+  data={{
+    headers: [
+      { key: "app_id", content: "app_id" },
+      { key: "app_name", content: "app_name" },
+      { key: "reg_at", content: "reg_at" },
+    ],
+    rows: [
+      ["5235", "Google", "1542283375879"],
+      ["2340", "THB", "1542283400585"],
+      ["4327", "Facebook", "1542283400481"],
+      ["3299", "foliage", "1542283430509"],
+    ],
+  }}
+/>
+
+<Table
+  data={{
+    headers: [
+      { key: "app_id", content: "app_id" },
+      { key: "data_id", content: "data_id" },
+    ],
+    rows: [
+      ["3299", "1"],
+      ["3299", "2"],
+      ["3299", "3"],
+      ["4327", "1"],
+    ],
+  }}
+/>
+
+<Table
+  data={{
+    headers: [
+      { key: "data_id", content: "data_id" },
+      { key: "data_name", content: "data_name" },
+    ],
+    rows: [
+      ["1", "firstname"],
+      ["2", "lastname"],
+      ["3", "photos"],
+      ["4", "friends"],
+    ],
+  }}
+/>
+
+<Table
+  data={{
+    headers: [
+      { key: "app_id", content: "app_id" },
+      { key: "user_id", content: "user_id" },
+      { key: "access_token", content: "access_token" },
+      { key: "refresh_token", content: "refresh_token" },
+      { key: "expires_at", content: "expires_at" },
+    ],
+    rows: [
+      ["3299", "3243", "NKFJD6FSK3", "dsdcGJHG6_D", "154228324235"],
+      ["3299", "5432", "SDKBKj7HK", "DBJhBU7gi7", "1542283400235"],
+      ["2348", "23445", "KFVNKJnkJ78g", "SBJbjs6sgvV", "1542283400523"],
+    ],
+  }}
+/>
 
 ## Technische Umsetzung
 

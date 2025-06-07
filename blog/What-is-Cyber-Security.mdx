@@ -1,0 +1,162 @@
+---
+title: "What You Should Know About Cyber Security"
+summary: "Cyber Security ist mehr als nur ein Buzzword – dieser Artikel erklärt die wichtigsten Teilbereiche, Rollen und Karrierechancen im Jahr 2025."
+publishedAt: "2019-10-15"
+updatedAt: "2025-06-01"
+readingTime: "8 min"
+
+status: "published"
+
+tag:
+  - "Cybersecurity"
+  - "Karriere"
+  - "Security Analyst"
+  - "Bug Bounty"
+  - "IT Security"
+
+categories:
+  - "Security"
+
+keywords:
+  - "Cyber Security"
+  - "Security Analyst"
+  - "Bug Bounty"
+  - "Web Security"
+  - "Karriere in der IT"
+
+image: "/images/blog/Cyber-Security.png"
+
+team:
+  - name: "Aland Baban"
+    role: "Full Stack Developer"
+    avatar: "/images/avatar.jpg"
+    github: "https://github.com/amariwan"
+---
+
+# Cyber Security: Ein Fachlicher Leitfaden für Einsteiger und Fortgeschrittene
+
+Cyber Security ist ein kritisches Feld, das den Schutz digitaler Systeme, Netzwerke und Daten vor Bedrohungen wie Ransomware, Phishing oder Advanced Persistent Threats (APTs) sicherstellt. Dieser Blog-Post bietet eine fachliche Einführung in Cyber Security, detaillierte Einblicke in Berufsfelder, spezifische Tools, anerkannte Zertifikate und praktische Tipps aus der Erfahrung, um dir den Einstieg oder die Vertiefung zu erleichtern.
+
+## Was ist Cyber Security?
+
+Cyber Security umfasst Technologien, Prozesse und Praktiken, um die Vertraulichkeit, Integrität und Verfügbarkeit (CIA-Triade) von digitalen Assets zu gewährleisten. Dazu gehören Netzwerke, Endgeräte, Cloud-Umgebungen und Daten – egal ob in Unternehmenssystemen oder IoT-Geräten. Angesichts der steigenden Bedrohung durch KI-gestützte Angriffe, Zero-Day-Exploits und regulatorischer Anforderungen (z. B. DSGVO, Cyber Resilience Act) ist fundiertes Wissen entscheidend.
+
+### Warum ist Cyber Security relevant?
+
+- **Bedrohungslandschaft**: Laut Berichten wie dem Verizon DBIR sind Phishing (über 30 % der Angriffe) und Ransomware weiterhin dominant.
+- **Fachkräftemangel**: Weltweit fehlen Millionen qualifizierte Expert:innen, was Karrierechancen eröffnet.
+- **Technologische Entwicklungen**: Cloud-Migration, 5G und IoT erweitern die Angriffsfläche.
+
+## Berufsfelder in der Cyber Security: Rollen und Anforderungen
+
+Hier sind die wichtigsten Berufsfelder mit praktischen Einblicken, Tools und Zertifikaten:
+
+### Web Application Security Analyst
+
+- **Aufgaben**: Identifizieren von Schwachstellen wie SQL-Injection, XSS oder Insecure Direct Object References (IDOR) in Webanwendungen. Analyst:innen nutzen Tools wie **Burp Suite Professional**, **OWASP ZAP** oder **Postman** für API-Tests und erstellen detaillierte Schwachstellenberichte.
+- **Praxisbeispiel**: Bei einem Penetrationstest einer E-Commerce-Plattform entdeckte ich eine IDOR-Lücke, die es erlaubte, fremde Bestellungen einzusehen, und empfahl die Implementierung von Zugriffskontrollen nach OWASP Top 10.
+- **Tools**: Burp Suite, OWASP ZAP, Nikto, Postman, Snyk (für Code-Analyse).
+- **Zertifikate**: **OSCP** (Offensive Security Certified Professional), **CEH** (Certified Ethical Hacker), **GWAPT** (GIAC Web Application Penetration Tester).
+- **Einstieg**: Lerne HTTP, JavaScript, SQL und REST-APIs. Übe auf Plattformen wie **Hack The Box** (z. B. Box „Lame“) oder **Web Security Academy**.
+
+### Mobile Application Security Analyst
+
+- **Aufgaben**: Analyse von Android- und iOS-Apps auf Schwachstellen wie unsichere Datenlagerung oder schwache Authentifizierung. Tools wie **MobSF** (Mobile Security Framework) und **Frida** werden für statische und dynamische Analysen genutzt.
+- **Praxisbeispiel**: Bei der Analyse einer FinTech-App fand ich eine unsichere Speicherung von API-Schlüsseln im App-Bundle, die mit Frida extrahiert werden konnten.
+- **Tools**: MobSF, Frida, Drozer (Android), Objection, QARK.
+- **Zertifikate**: **OSCP**, **CMASP** (Certified Mobile Application Security Professional), **eMAPT** (eLearnSecurity Mobile Application Penetration Tester).
+- **Einstieg**: Verstehe Android (APK-Dekompilierung mit **Jadx**) und iOS (IPA-Analyse). Übe auf **OverTheWire** oder **TryHackMe**.
+
+### Network Security Specialist
+
+- **Aufgaben**: Schutz von Netzwerken durch Konfiguration von Firewalls (z. B. **Palo Alto**, **pfSense**), Intrusion Detection Systems (z. B. **Snort**) und Durchführung von Audits mit **Nmap** oder **Wireshark**.
+- **Praxisbeispiel**: Bei einem Netzwerk-Audit entdeckte ich offene Ports (z. B. RDP auf 3389), die durch eine Firewall-Regel geschlossen wurden, um Brute-Force-Angriffe zu verhindern.
+- **Tools**: Nmap, Wireshark, Nessus, OpenVAS, Metasploit.
+- **Zertifikate**: **CCNA Security**, **GNSA** (GIAC Network Security Administrator), **CISSP** (für Fortgeschrittene).
+- **Einstieg**: Lerne TCP/IP, VLANs und Subnetting. Übe mit **Vulnhub** oder **TryHackMe** (z. B. Netzwerk-Boxen).
+
+### Bug Bounty Hunter
+
+- **Aufgaben**: Suche nach Schwachstellen in Systemen von Unternehmen wie Google, Meta oder Microsoft über Plattformen wie **HackerOne** oder **Bugcrowd**. Kritische Funde (z. B. Remote Code Execution) können fünf- bis sechsstellige Belohnungen einbringen.
+- **Praxisbeispiel**: Ich fand eine XSS-Lücke in einer Subdomain eines großen Tech-Unternehmens, die durch unsaubere Eingabeverarbeitung entstand, und erhielt eine Prämie von 5.000 $.
+- **Tools**: Burp Suite, DirBuster, Sublist3r, Amass, sqlmap.
+- **Zertifikate**: **OSCP**, **CRTP** (Certified Red Team Professional), **Burp Suite Certified Practitioner**.
+- **Einstieg**: Starte mit kleinen Programmen auf **Intigriti** oder **YesWeHack**. Lerne Recon-Techniken (z. B. Subdomain-Enumeration).
+
+### Cyber Security Trainer
+
+- **Aufgaben**: Schulung zu Themen wie sichere Softwareentwicklung, Phishing-Prävention oder Incident Response. Trainer nutzen Plattformen wie **KnowBe4** für Awareness-Schulungen oder erstellen CTF-Szenarien.
+- **Praxisbeispiel**: Ich entwickelte ein internes CTF für ein Unternehmen, um Mitarbeiter für Phishing-Angriffe zu sensibilisieren, basierend auf realen Spear-Phishing-Szenarien.
+- **Tools**: KnowBe4, Kali Linux (für CTF-Setups), TryHackMe (für Schulungslabs).
+- **Zertifikate**: **CEH**, **CHFI** (Computer Hacking Forensic Investigator), **CompTIA PenTest+**.
+- **Einstieg**: Kombiniere technisches Wissen mit Präsentationsfähigkeiten. Übe mit CTF-Design auf **Hack The Box**.
+
+### Cyber Security Administrator
+
+- **Aufgaben**: Verwaltung von Sicherheitslösungen wie SIEM-Systemen (**Splunk**, **Elastic Stack**) und Patch-Management. Überwachung von Vorfällen mit Tools wie **CrowdStrike** oder **SentinelOne**.
+- **Praxisbeispiel**: Ich implementierte eine SIEM-Regel in Splunk, die ungewöhnliche Logins erkannte und so einen potenziellen Insider-Angriff aufdeckte.
+- **Tools**: Splunk, Elastic Stack, CrowdStrike, Nessus, WSUS.
+- **Zertifikate**: **CompTIA Security+**, **SSCP** (Systems Security Certified Practitioner), **GSEC** (GIAC Security Essentials).
+- **Einstieg**: Lerne Linux/Windows-Administration und SIEM-Grundlagen. Starte mit **TryHackMe** (SIEM-Labs).
+
+### Weitere Rollen
+
+- **Cloud Security Engineer**: Schutz von AWS, Azure oder GCP mit Tools wie **AWS Security Hub** oder **Prisma Cloud**. Zertifikate: **CCSP**, **AWS Certified Security**.
+- **IoT Security Specialist**: Absicherung von Geräten mit Tools wie **Binwalk** oder **Firmadyne**. Zertifikate: **OSCP**, **GIAC GIoT**.
+- **Cyber Threat Intelligence Analyst**: Analyse von Bedrohungen mit **MISP** oder **ThreatConnect**. Zertifikate: **CTIA** (Certified Threat Intelligence Analyst).
+
+## Karrierechancen: Ein praxisnaher Blick
+
+- **Nachfrage**: Der globale Bedarf an Cyber-Security-Fachkräften übersteigt das Angebot bei weitem. Unternehmen priorisieren Fähigkeiten über Abschlüsse.
+- **Gehälter**: Einsteiger in Deutschland verdienen 40.000–60.000 €, Senior-Positionen (z. B. CISO) über 100.000 €.
+- **Flexibilität**: Rollen wie Bug Bounty oder Beratung bieten Remote- und Freelance-Möglichkeiten.
+
+### Erfahrung aus der Praxis
+
+In meiner Arbeit als Penetrationstester habe ich gelernt, dass praktische Erfahrung entscheidend ist. Ein OSCP-Zertifikat öffnete Türen, aber erst durch regelmäßiges Üben auf Hack The Box und reale Bug-Bounty-Funde konnte ich mich von anderen abheben. Arbeitgeber schätzen Kandidaten, die konkrete Ergebnisse (z. B. Schwachstellenberichte oder CTF-Erfolge) vorweisen können.
+
+## Einstieg: Schritt-für-Schritt-Anleitung
+
+1. **Grundlagen lernen**:
+   - **Netzwerke**: TCP/IP, DNS, Subnetting (Wireshark, Nmap).
+   - **Programmierung**: Python (z. B. für Skripte mit **pwntools**), Bash, PowerShell.
+   - **Betriebssysteme**: Linux (Kali, Parrot OS), Windows Server.
+2. **Tools meistern**:
+   - Web: Burp Suite, OWASP ZAP, sqlmap.
+   - Netzwerk: Nmap, Metasploit, Nessus.
+   - Mobile: MobSF, Frida, Drozer.
+3. **Zertifikate anstreben**:
+   - Einsteiger: **CompTIA Security+**, **CEH**.
+   - Fortgeschrittene: **OSCP**, **CRTP**, **CISSP**.
+4. **Praxis sammeln**:
+   - **Labs**: TryHackMe (z. B. „OWASP Top 10“), Hack The Box (z. B. „Retired Machines“).
+   - **Bug Bounty**: Starte auf HackerOne oder Bugcrowd mit Programmen wie „PayPal“ oder „Shopify“.
+   - **CTFs**: Nimm an Wettbewerben wie **picoCTF** oder **DEFCON CTF Qualifiers** teil.
+5. **Netzwerken**:
+   - Besuche Konferenzen wie **DEF CON**, **Black Hat** oder **BSides**.
+   - Folge Experten auf X (z. B. @bugcrowd, @nahamsec, @thegrugq).
+   - Tritt Communities wie **OWASP** oder **Null Byte** bei.
+
+## Praktische Tipps aus der Erfahrung
+
+- **Lab-Umgebung aufbauen**: Nutze **VirtualBox** oder **VMware** für eine sichere Testumgebung mit Kali Linux und anfälligen VMs (z. B. Metasploitable).
+- **Automatisierung lernen**: Schreibe Python-Skripte für Recon (z. B. Subdomain-Enumeration mit **Amass**) oder Schwachstellen-Scans.
+- **Legal bleiben**: Arbeite nur in autorisierten Umgebungen wie Bug-Bounty-Programmen oder eigenen Labs, um rechtliche Konsequenzen zu vermeiden.
+- **Portfolio aufbauen**: Dokumentiere Funde (z. B. Bug-Bounty-Berichte) oder erstelle Write-ups für CTF-Lösungen auf GitHub.
+
+## Trends und Herausforderungen
+
+- **KI-gestützte Angriffe**: Automatisierte Phishing-Kampagnen oder Deepfake-gestützte Social Engineering erfordern neue Abwehrstrategien.
+- **Zero Trust**: Dynamische Authentifizierung und kontinuierliche Überprüfung (z. B. mit **Okta** oder **BeyondCorp**) werden Standard.
+- **Cloud-Sicherheit**: Mit der Migration zu AWS, Azure und Co. steigt der Bedarf an Tools wie **Wiz** oder **Aqua Security**.
+- **Regulatorische Anforderungen**: DSGVO und ähnliche Gesetze erzwingen strengere Sicherheitsmaßnahmen.
+
+## Fazit: Dein Weg in die Cyber Security
+
+Cyber Security bietet ein dynamisches, hochbezahltes Arbeitsfeld mit vielfältigen Spezialisierungen. Ob du Penetrationstests, Netzwerksicherheit oder Bug Hunting anstrebst – der Schlüssel ist praktische Erfahrung, kombiniert mit anerkannten Zertifikaten und kontinuierlichem Lernen. Starte mit Tools wie Burp Suite oder Nmap, übe auf Plattformen wie Hack The Box und baue ein Portfolio auf.
+
+**Nächste Schritte**:
+
+- Melde dich bei **TryHackMe** an und arbeite die „OWASP Top 10“-Lernpfade durch.
+- Lies „The Web Application Hacker’s Handbook“ oder „Practical Malware Analysis“.
+- Folge Cyber-Security-Experten auf X für aktuelle Einblicke (z. B. @zseano, @samcurry\_).
