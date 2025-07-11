@@ -79,4 +79,62 @@ Blue Team nutzt SIEM (Splunk, Elastic), IDS/IPS (Snort, Suricata) & User‑Repor
 📝 *Storytime:* 2025 übersah ein Unternehmen einen APT – 10 Mio € Schaden.  
 🎯 *Master‑Tipp:* „Hypothesis‑Driven Hunting“ + Sandbox‑Analyse (Cuckoo).
 
+---
+
+## 3️⃣ Eindämmung, Beseitigung & Wiederherstellung: Den Angriff ausknocken
+
+> „Stoppen. Säubern. Respawn.“
+
+Blue Team zieht die Brechstange:
+
+- **Eindämmung:** System isolieren, ACLs härten
+- **Beseitigung:** EDR‑Tools (CrowdStrike), Patches, IoT‑Prüfung
+- **Wiederherstellung:** Backups + Prüfsummen + Honeytokens
+
+📝 *Storytime:* Backup infiziert. Daten verloren. Teste Backups!  
+🎯 *Master‑Tipp:* Alternative Kanäle (Signal) + ALLES dokumentieren.
+
+---
+
+## 4️⃣ Nachbereitung: Level up oder F drücken
+
+> „Ein Vorfall ohne Lessons Learned ist wie ein Bug ohne Patch.“
+
+- **Root Cause ≠ Contributing Factors**
+- **KPIs:** MTTD < 24h, MTTR < 72h
+- **Blameless Culture**
+- **Threat Briefings:** intern & ISACs
+
+🎯 *Master‑Tipp:* Vorfälle melden & Erkenntnisse teilen.
+
+---
+
+# 🔷 Pro-Level-Konzepte
+
+## Forensik on Steroids
+- RAM: Volatility
+- Netzwerktraces: Wireshark, Zeek
+- Integrität: SHA‑256 + GPG
+
+🎯 *Master‑Tipp:* Autopsy & Chain of Custody wie ein CSI‑Agent.
+
+---
+
+## Proaktive Verteidigung
+- Honeypots & Honey‑Accounts
+- Threat Emulation: Caldera, Atomic Red Team
+- Proaktives Hunting
+
+🎯 *Master‑Tipp:* Auch ohne Alarme suchen.
+
+---
+
+## Kommunikation: Keine Panik-Tweets
+- Holding Statements
+- Kommunikationsmatrix
+- Signal/Telefon fallback
+
+🎯 *Master‑Tipp:* Krisenkommunikation üben.
+
+
 
