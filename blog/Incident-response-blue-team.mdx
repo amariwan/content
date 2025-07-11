@@ -47,7 +47,36 @@ Vier Phasen, die dein Blue Team wie seinen 2FA‑Code kennen muss.
 
 ## 1️⃣ Vorbereitung: Dein Fundament oder Blue Screen of Death
 
-> Failing to prepare is preparing to get pwned. 
-– Jeder SOC‑Analyst um 3 Uhr morgens.
+> „Failing to prepare is preparing to get pwned.“ – Jeder SOC‑Analyst um 3 Uhr morgens.
+
+
+Ohne Vorbereitung bist du so verloren wie ein Passwort in `/dev/null`.  
+Das Blue Team baut Resilienz auf:
+
+- **Cybersecurity-Framework:** NIST CSF oder ISO 27001 implementieren
+- **IR vs. DR:** Vertraulichkeit & Integrität ≠ Verfügbarkeit
+- **Playbooks:** Ransomware, Phishing, Insider – modular & aktuell
+- **Tools & Infrastruktur:** „Jump Kit“ + War Room
+- **Simulationen:** Red Team Stress‑Tests
+
+📝 *Storytime:* 2024 verlor ein Unternehmen 5 Mio €, weil niemand wusste, wer Incident Commander ist.  
+🎯 *Master‑Tipp:* „Blast Radius“ der kritischsten Systeme kennen & quartalsweise testen.
+
+---
+
+## 2️⃣ Erkennung & Analyse: Den Hacker im Log-Dschungel schnappen
+
+> „Wenn du den Angriff nicht siehst, bist du der NPC in diesem Cyberpunk‑Level.“
+
+Früherkennung ist alles.  
+Blue Team nutzt SIEM (Splunk, Elastic), IDS/IPS (Snort, Suricata) & User‑Reports.
+
+- **Baselining:** Normalzustand kennen
+- **Threat Intelligence:** Feeds & YARA‑Rules für aktuelle TTPs
+- **MITRE ATT&CK:** Klassifizieren & Lücken finden
+- **Logs sichern:** WORM‑Storage
+
+📝 *Storytime:* 2025 übersah ein Unternehmen einen APT – 10 Mio € Schaden.  
+🎯 *Master‑Tipp:* „Hypothesis‑Driven Hunting“ + Sandbox‑Analyse (Cuckoo).
 
 
