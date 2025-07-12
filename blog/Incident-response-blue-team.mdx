@@ -31,41 +31,41 @@ team:
        github: 'https://github.com/amariwan'
 ---
 
-Cyberangriffe sind wie ein Endgegner in Dark Souls: unerbittlich, hinterhältig und immer einen Schritt voraus – es sei denn, dein Blue Team hat einen wasserdichten Incident-Response-Plan.😎 Ob Phishing-Mails, die „Gratis-Bitcoin.exe“ schreien, Ransomware, die deine Daten kidnappt, oder ein Insider,
-der den Server sabotiert – ohne Plan endet’s in einem Game Over. Doch mit Struktur, Tools und einem Hauch Meme-Magie wirst du Angriffe wie ein Cyber-Ninja yeeten. 🥷
+Cyberangriffe sind wie ein Endgegner in Dark Souls: unerbittlich, hinterhältig und immer einen Schritt voraus, es sei denn, dein Blue Team hat einen wasserdichten Incident-Response-Plan.😎 Ob Phishing-Mails, die „Gratis-Bitcoin.exe“ schreien, Ransomware, die deine Daten kidnappt, oder ein Insider,
+der den Server sabotiert, ohne Plan endet's in einem Game Over. Doch mit Struktur, Tools und einem Hauch Meme-Magie wirst du Angriffe wie ein Cyber-Ninja yeeten. 🥷
 
-Basierend auf dem NIST-Standard (SP 800‑61), gespickt mit Praxis-Tipps, KPIs und Angriffstrends 2025 – hier ist dein Cheat-Sheet, um die digitale Apokalypse zu meistern!
+Basierend auf dem NIST-Standard (SP 800-61), gespickt mit Praxis-Tipps, KPIs und Angriffstrends 2025 - hier ist dein Cheat-Sheet, um die digitale Apokalypse zu meistern!
 
 # 🔷 Incident Response Lifecycle: Dein Masterplan gegen Cyber-Chaos
 
-Der NIST‑Standard ist wie der One Ring der Cybersecurity: mächtig, strukturiert, unverzichtbar. Vier Phasen, die dein Blue Team wie seinen 2FA‑Code kennen muss.
+Der NIST-Standard ist wie der One Ring der Cybersecurity: mächtig, strukturiert, unverzichtbar. Vier Phasen, die dein Blue Team wie seinen 2FA-Code kennen muss.
 
 ## 🛠️ Vorbereitung: Dein Fundament oder Blue Screen of Death
 
-> „Failing to prepare is preparing to get pwned.“ – Jeder SOC‑Analyst um 3 Uhr morgens.
+> „Failing to prepare is preparing to get pwned.“ - Jeder SOC-Analyst um 3 Uhr morgens.
 
 Ohne Vorbereitung bist du so verloren wie ein Passwort in `/dev/null`. Das Blue Team baut Resilienz auf:
 
--    **Cybersecurity-Framework:** NIST CSF oder ISO 27001 implementieren
+-    **Cybersecurity-Framework:** NIST CSF oder ISO 27001 implementieren
 -    **IR vs. DR:** Vertraulichkeit & Integrität ≠ Verfügbarkeit
--    **Playbooks:** Ransomware, Phishing, Insider – modular & aktuell
+-    **Playbooks:** Ransomware, Phishing, Insider - modular & aktuell
 -    **Tools & Infrastruktur:** „Jump Kit“ + War Room
--    **Simulationen:** Red Team Stress‑Tests
+-    **Simulationen:** Red Team Stress-Tests
 
-     _Storytime:_ 2024 verlor ein Unternehmen 5 Mio €, weil niemand wusste, wer Incident Commander ist. 🎯 _Master‑Tipp:_ „Blast Radius“ der kritischsten Systeme kennen & quartalsweise testen.
+     _Storytime:_ 2024 verlor ein Unternehmen 5 Mio €, weil niemand wusste, wer Incident Commander ist. 🎯 _Master-Tipp:_ „Blast Radius“ der kritischsten Systeme kennen & quartalsweise testen.
 
 ## 🔍 Erkennung & Analyse: Den Hacker im Log-Dschungel schnappen
 
-> „Wenn du den Angriff nicht siehst, bist du der NPC in diesem Cyberpunk‑Level.“
+> „Wenn du den Angriff nicht siehst, bist du der NPC in diesem Cyberpunk-Level.“
 
-Früherkennung ist alles. Blue Team nutzt SIEM (Splunk, Elastic), IDS/IPS (Snort, Suricata) & User‑Reports.
+Früherkennung ist alles. Blue Team nutzt SIEM (Splunk, Elastic), IDS/IPS (Snort, Suricata) & User-Reports.
 
 -    **Baselining:** Normalzustand kennen
--    **Threat Intelligence:** Feeds & YARA‑Rules für aktuelle TTPs
+-    **Threat Intelligence:** Feeds & YARA-Rules für aktuelle TTPs
 -    **MITRE ATT&CK:** Klassifizieren & Lücken finden
--    **Logs sichern:** WORM‑Storage
+-    **Logs sichern:** WORM-Storage
 
-     _Storytime:_ 2025 übersah ein Unternehmen einen APT – 10 Mio € Schaden. 🎯 _Master‑Tipp:_ „Hypothesis‑Driven Hunting“ + Sandbox‑Analyse (Cuckoo).
+     _Storytime:_ 2025 übersah ein Unternehmen einen APT - 10 Mio € Schaden. 🎯 _Master-Tipp:_ „Hypothesis-Driven Hunting“ + Sandbox-Analyse (Cuckoo).
 
 ## 🚧 Eindämmung, Beseitigung & Wiederherstellung: Den Angriff ausknocken
 
@@ -74,21 +74,21 @@ Früherkennung ist alles. Blue Team nutzt SIEM (Splunk, Elastic), IDS/IPS (Snort
 Blue Team zieht die Brechstange:
 
 -    **Eindämmung:** System isolieren, ACLs härten
--    **Beseitigung:** EDR‑Tools (CrowdStrike), Patches, IoT‑Prüfung
+-    **Beseitigung:** EDR-Tools (CrowdStrike), Patches, IoT-Prüfung
 -    **Wiederherstellung:** Backups + Prüfsummen + Honeytokens
 
-     _Storytime:_ Backup infiziert. Daten verloren. Teste Backups! 🎯 _Master‑Tipp:_ Alternative Kanäle (Signal) + ALLES dokumentieren.
+     _Storytime:_ Backup infiziert. Daten verloren. Teste Backups! 🎯 _Master-Tipp:_ Alternative Kanäle (Signal) + ALLES dokumentieren.
 
 ## 📚 Nachbereitung: Level up oder F drücken
 
 > „Ein Vorfall ohne Lessons Learned ist wie ein Bug ohne Patch.“
 
 -    **Root Cause ≠ Contributing Factors**
--    **KPIs:** MTTD < 24h, MTTR < 72h
+-    **KPIs:** MTTD < 24h, MTTR < 72h
 -    **Blameless Culture**
 -    **Threat Briefings:** intern & ISACs
 
-🎯 _Master‑Tipp:_ Vorfälle melden & Erkenntnisse teilen.
+🎯 _Master-Tipp:_ Vorfälle melden & Erkenntnisse teilen.
 
 # Pro-Level-Konzepte
 
@@ -96,17 +96,17 @@ Blue Team zieht die Brechstange:
 
 -    RAM: Volatility
 -    Netzwerktraces: Wireshark, Zeek
--    Integrität: SHA‑256 + GPG
+-    Integrität: SHA-256 + GPG
 
-🎯 _Master‑Tipp:_ Autopsy & Chain of Custody wie ein CSI‑Agent.
+🎯 _Master-Tipp:_ Autopsy & Chain of Custody wie ein CSI-Agent.
 
 ## Proaktive Verteidigung
 
--    Honeypots & Honey‑Accounts
+-    Honeypots & Honey-Accounts
 -    Threat Emulation: Caldera, Atomic Red Team
 -    Proaktives Hunting
 
-🎯 _Master‑Tipp:_ Auch ohne Alarme suchen.
+🎯 _Master-Tipp:_ Auch ohne Alarme suchen.
 
 ## Kommunikation: Keine Panik-Tweets
 
@@ -114,7 +114,7 @@ Blue Team zieht die Brechstange:
 -    Kommunikationsmatrix
 -    Signal/Telefon fallback
 
-🎯 _Master‑Tipp:_ Krisenkommunikation üben.
+🎯 _Master-Tipp:_ Krisenkommunikation üben.
 
 # Angriffsszenarien 2025
 
@@ -125,15 +125,15 @@ Blue Team zieht die Brechstange:
 			{ key: 'percentage', content: 'Anteil' },
 		],
 		rows: [
-			['Phishing', '40 %'],
-			['Ransomware', '30 %'],
-			['DDoS', '20 %'],
-			['Insider Threat', '10 %'],
+			['Phishing', '40 %'],
+			['Ransomware', '30 %'],
+			['DDoS', '20 %'],
+			['Insider Threat', '10 %'],
 		],
 	}}
 />
 
-🎯 _Master‑Tipp:_ AlienVault OTX & MITRE ATT&CK nutzen.
+🎯 _Master‑Tipp:_ AlienVault OTX & MITRE ATT&CK nutzen.
 
 # Cheat Sheet: KPIs & Best Practices
 
@@ -144,11 +144,11 @@ Blue Team zieht die Brechstange:
 			{ key: 'target', content: 'Zielwert' },
 		],
 		rows: [
-			['MTTD', '< 24 h'],
-			['MTTR', '< 72 h'],
-			['Backups getestet', '1×/Monat'],
-			['Tabletop‑Übungen', '2×/Jahr'],
-			['Awareness‑Trainings', 'quartalsweise'],
+			['MTTD', '< 24 h'],
+			['MTTR', '< 72 h'],
+			['Backups getestet', '1x/Monat'],
+			['Tabletop-Übungen', '2x/Jahr'],
+			['Awareness-Trainings', 'quartalsweise'],
 		],
 	}}
 />
@@ -158,17 +158,17 @@ Blue Team zieht die Brechstange:
 # 7 Master-Tipps
 
 -    Modulare Playbooks
--    „3 Uhr‑nachts‑ready“
+-    „3 Uhr-nachts-ready“
 -    Proaktives Hunting
 -    VLANs & ACLs
--    Backup‑Tests
+-    Backup-Tests
 -    Dokumentation
 -    Community
 
 # Fazit: Aus Reaktion wird Präzision
 
-Incident Response ist kein Freestyle‑Hackathon, sondern ein disziplinierter Kampf. Mit scharfem Blue Team, NIST‑Plan, XDR & Meme‑Magie zerlegst du Angriffe wie ein Cyber‑Ninja.
+Incident Response ist kein Freestyle-Hackathon, sondern ein disziplinierter Kampf. Mit scharfem Blue Team, NIST-Plan, XDR & Meme-Magie zerlegst du Angriffe wie ein Cyber-Ninja.
 
-> „Am Ende gewinnt nicht der, der nie angegriffen wird – sondern der, der nie kapituliert.“
+> „Am Ende gewinnt nicht der, der nie angegriffen wird - sondern der, der nie kapituliert.“
 
 _Call-to-Action:_ Playbook erstellen, Tabletop üben & Memes teilen: **#BlueTeamVibes**
