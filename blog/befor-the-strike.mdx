@@ -1,28 +1,176 @@
 ---
-title: '🛡️ Incident Response: Wie das Blue Team Cyberangriffe wie ein Cyber-Ninja zerlegt'
-summary: 'Incident Response entscheidet über Sieg oder Niederlage in der Cyberabwehr. Erfahre, wie das Blue Team Angriffe erkennt, eindämmt und das Unternehmen sicher durch die Krise führt.'
-publishedAt: '2025-07-11'
-updatedAt: '2025-07-11'
-readingTime: '11 min'
+title: '🕵️‍♂️ Threat Hunting wie ein Cyber-Detektiv: Auf der Fährte der Unsichtbaren'
+summary: 'Threat Hunting entscheidet, ob du den Angreifer vor dem Angriff entdeckst. Erfahre, wie Blue Teams mit Hypothesen, Playbooks und modernen Tools proaktiv Bedrohungen jagen.'
+publishedAt: '2025-07-13'
+updatedAt: '2025-07-13'
+readingTime: '12 min'
 status: 'published'
 tags:
-     - 'Incident Response'
-     - 'Blue Team'
-     - 'Cybersecurity'
-     - 'NIST SP 800-61'
-     - 'Forensik'
+    - 'Threat Hunting'
+    - 'Blue Team'
+    - 'Cybersecurity'
+    - 'MITRE ATT&CK'
+    - 'XDR'
 categories:
-     - 'Security'
-     - 'Operations'
+    - 'Security'
+    - 'Operations'
 keywords:
-     - 'Incident Response'
-     - 'Blue Team'
-     - 'Containment'
-     - 'Eradication'
-     - 'Forensik'
-     - 'SIEM'
-     - 'NIST Incident Response Lifecycle'
-     - 'Lessons Learned'
-image: '/images/blog/incident-response-blue-team.jpg'
+    - 'Threat Hunting'
+    - 'Blue Team'
+    - 'MITRE ATT&CK'
+    - 'Hypothesis-Driven'
+    - 'XDR'
+    - 'Forensik'
+    - 'TTPs'
+    - 'Playbook'
+image: '/images/blog/SherlockCyberDetektiv.png'
 authors: 'me'
 ---
+
+In der Welt der Cybersecurity auf einen SIEM-Alarm zu warten, ist, als würdest du in *Among Us* auf den Notfallknopf hoffen, während der Impostor längst sein Werk tut. Hacker werden 2025 immer raffinierter – mit Low-and-Slow-Angriffen, Advanced Persistent Threats (APTs) und Insider Threats, die im Schatten deiner Logs operieren.  
+
+Hier setzt **Threat Hunting** an: die Kunst, Bedrohungen proaktiv zu identifizieren, bevor sie dein System kompromittieren.  
+
+## 🎭 Fallstudie: DNS-Tunneling
+
+> Ein Analyst bei einer Bank bemerkte ungewöhnlich hohe DNS-Abfragen auf nicht aufgelöste Domains. Analyse ergab: Daten wurden über DNS-Tunneling exfiltriert.  
+> Hypothese: „Exfiltration via DNS.“
+> Ergebnis: Angreifer entdeckt, Schaden begrenzt, Prozesse optimiert.
+
+## 🔷 Was ist Threat Hunting?
+
+### Vom Alarmklingeln zur Vorahnung
+
+**Reaktiv vs. Proaktiv:**
+- SIEM/IDS reagieren auf bekannte Muster.
+- Threat Hunters suchen proaktiv nach subtilen Signalen, die unter dem Radar bleiben.
+
+### Vorgehensweisen:
+- **Hypothesis-Driven:** „Ein Angreifer nutzt gestohlene Credentials.“
+- **Data-Driven:** Statistische Ausreißer erkennen (z.B. Login um 03:14 Uhr mit Service-Konto).
+
+**💡 Profi-Tipp:**  
+Starte mit einer klaren, fokussierten Hypothese statt planlosem Scannen.
+
+## 🧰 Werkzeugkiste des Cyber-Detektivs
+
+| Tool                    | Zweck                                        |
+| ----------------------- | -------------------------------------------- |
+| **SIEM**                | Logs korrelieren & Alarmierung (Splunk)     |
+| **XDR**                 | Endpoints + Cloud vereint (CrowdStrike)     |
+| **Threat Intelligence** | TTPs & IOCs aktuell halten (OTX, RF)        |
+| **Forensik**            | RAM & Netzwerk-Analyse (Zeek, Volatility)   |
+| **Emulation**           | Angriffssimulation (Atomic Red Team)        |
+| **YARA-Rules**          | Malware-Signaturen entwickeln & scannen     |
+
+**💡 Profi-Tipp:**  
+Aktualisiere YARA-Rules wöchentlich & binde Threat-Intel-Feeds ins SIEM.
+
+## 🔷 Blueprint: Threat-Hunting-Prozess
+
+1️⃣ **Hypothese**  
+→ „Lateral Movement über RDP.“  
+→ MITRE ATT&CK: T1078, T1021.
+
+2️⃣ **Daten sammeln**  
+→ Logs, RAM-Dumps, Netzwerk-Flows.
+
+3️⃣ **Analyse**  
+→ Abweichungen von der Baseline.
+
+4️⃣ **Validierung**  
+→ Sandbox & Peer-Review.
+
+5️⃣ **Reaktion**  
+→ Systeme isolieren, Playbooks erweitern.
+
+**💡 Profi-Tipp:**  
+Dokumentiere jeden Schritt mit Zeitstempeln.
+
+
+## 📈 Top-TTPs 2025 (MITRE ATT&CK)
+
+| TTP                         | Prävalenz |
+| --------------------------- | ---------- |
+| Credential Dumping (T1003)  | 35 %       |
+| Lateral Movement (T1021)    | 25 %       |
+| Command and Control (T1071) | 20 %       |
+| Data Exfiltration (T1041)   | 15 %       |
+| Process Injection (T1055)   | 5 %        |
+
+
+
+## 📋 Hunting-Playbook (Beispiel)
+
+```yaml
+- name: Hunting for Credential Dumping
+  hypothesis: "Angreifer dumpen LSASS für Credentials"
+  steps:
+    - Monitor LSASS-Zugriffe (Sysmon EventID 10)
+    - Prüfe auf unübliche NTLM-Authentifizierungen
+    - YARA-Scan auf Memory Dumps
+````
+
+##  KPIs für Erfolg im Hunting
+
+| Kennzahl                   | Zielwert   |
+| -------------------------- | ---------- |
+| Anomalien pro Woche        | > 5        |
+| MTTD (Mean Time To Detect) | < 24 h     |
+| False-Positive-Rate        | < 20 %     |
+| Playbook-Updates           | ≥ 1×/Monat |
+
+
+## 🚧 Herausforderungen & Lösungen
+
+| Herausforderung | Lösung                                |
+| --------------- | ------------------------------------- |
+| Datenflut       | Machine Learning (Elastic, Splunk ML) |
+| Skill-Gap       | Schulungen (SANS, TryHackMe)          |
+| Zeitmangel      | 2 h pro Woche fest einplanen          |
+
+
+## 📜 Checkliste für Einsteiger
+
+✅ Hypothese aufstellen
+✅ Datenquellen identifizieren
+✅ Baseline definieren
+✅ Tools konfigurieren
+✅ Findings dokumentieren
+
+
+## 📚 Literaturempfehlungen
+
+* *Cyber Threat Hunting* (Madiran Alfordan, Manning)
+* SANS FOR508 Kurs
+* MITRE ATT\&CK Navigator Whitepaper
+* Talks von BlackHat & Defcon
+
+
+## 🎮 Mini-Quiz: Bist du bereit?
+
+### Frage 1
+
+Dein SIEM zeigt verdächtigen Traffic um 04:00 Uhr.
+a) Ignorieren
+b) Hypothese bilden & MITRE prüfen
+c) Server sofort herunterfahren
+
+### Frage 2
+
+Du vermutest Lateral Movement über SMB. Welches Tool?
+a) Wireshark
+b) Photoshop
+c) Excel
+
+### Frage 3
+
+Ein Prozess verhält sich verdächtig. Dein Vorgehen?
+a) RAM-Dump & YARA
+b) Task-Manager
+c) Ignorieren
+
+**Antworten:**
+✅ 3/3: Cyber-Detektiv par excellence.
+🟨 2/3: Solide Basis, mehr Training!
+🟥 ≤ 1: Zeit für eine Hunting-Session.
