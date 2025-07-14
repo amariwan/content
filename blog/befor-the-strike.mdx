@@ -27,150 +27,196 @@ image: '/images/blog/SherlockCyberDetektiv.png'
 authors: 'me'
 ---
 
-In der Welt der Cybersecurity auf einen SIEM-Alarm zu warten, ist, als würdest du in *Among Us* auf den Notfallknopf hoffen, während der Impostor längst sein Werk tut. Hacker werden 2025 immer raffinierter – mit Low-and-Slow-Angriffen, Advanced Persistent Threats (APTs) und Insider Threats, die im Schatten deiner Logs operieren.  
-
-Hier setzt **Threat Hunting** an: die Kunst, Bedrohungen proaktiv zu identifizieren, bevor sie dein System kompromittieren.  
-
-## 🎭 Fallstudie: DNS-Tunneling
-
-> Ein Analyst bei einer Bank bemerkte ungewöhnlich hohe DNS-Abfragen auf nicht aufgelöste Domains. Analyse ergab: Daten wurden über DNS-Tunneling exfiltriert.  
-> Hypothese: „Exfiltration via DNS.“
-> Ergebnis: Angreifer entdeckt, Schaden begrenzt, Prozesse optimiert.
-
-## Was ist Threat Hunting?
-
-### Vom Alarmklingeln zur Vorahnung
-
-**Reaktiv vs. Proaktiv:**
-- SIEM/IDS reagieren auf bekannte Muster.
-- Threat Hunters suchen proaktiv nach subtilen Signalen, die unter dem Radar bleiben.
-
-### Vorgehensweisen:
-- **Hypothesis-Driven:** „Ein Angreifer nutzt gestohlene Credentials.“
-- **Data-Driven:** Statistische Ausreißer erkennen (z.B. Login um 03:14 Uhr mit Service-Konto).
-
-**💡 Profi-Tipp:**  
-Starte mit einer klaren, fokussierten Hypothese statt planlosem Scannen.
-
-## 🧰 Werkzeugkiste des Cyber-Detektivs
-
-| Tool                    | Zweck                                        |
-| ----------------------- | -------------------------------------------- |
-| **SIEM**                | Logs korrelieren & Alarmierung (Splunk)     |
-| **XDR**                 | Endpoints + Cloud vereint (CrowdStrike)     |
-| **Threat Intelligence** | TTPs & IOCs aktuell halten (OTX, RF)        |
-| **Forensik**            | RAM & Netzwerk-Analyse (Zeek, Volatility)   |
-| **Emulation**           | Angriffssimulation (Atomic Red Team)        |
-| **YARA-Rules**          | Malware-Signaturen entwickeln & scannen     |
-
-**💡 Profi-Tipp:**  
-Aktualisiere YARA-Rules wöchentlich & binde Threat-Intel-Feeds ins SIEM.
-
-## Blueprint: Threat-Hunting-Prozess
-
-1️⃣ **Hypothese**  
-→ „Lateral Movement über RDP.“  
-→ MITRE ATT&CK: T1078, T1021.
-
-2️⃣ **Daten sammeln**  
-→ Logs, RAM-Dumps, Netzwerk-Flows.
-
-3️⃣ **Analyse**  
-→ Abweichungen von der Baseline.
-
-4️⃣ **Validierung**  
-→ Sandbox & Peer-Review.
-
-5️⃣ **Reaktion**  
-→ Systeme isolieren, Playbooks erweitern.
-
-**💡 Profi-Tipp:**  
-Dokumentiere jeden Schritt mit Zeitstempeln.
+In der Welt der Cybersecurity ist Warten auf SIEM-Alarme so, als würdest du in *Among Us* auf den Notfallknopf hoffen, während der Impostor frei herumläuft.  
+2025 zwingen uns Low-and-Slow-Angriffe, APTs mit mehreren Vektoren und Insider Threats, die wie Gespenster durch die Logs schweben, zu einer härteren Gangart.  
+**Threat Hunting ist der professionelle Konter:** eine präzise, datengetriebene Jagd, die Angreifer entlarvt, bevor sie den finalen Schlag landen. Für Profis ist es keine Option – es ist die Grundlage.
 
 
-## 📈 Top-TTPs 2025 (MITRE ATT&CK)
+## 🔍 Fallstudie: DNS-Tunneling im Fokus
 
-| TTP                         | Prävalenz |
-| --------------------------- | ---------- |
-| Credential Dumping (T1003)  | 35 %       |
-| Lateral Movement (T1021)    | 25 %       |
-| Command and Control (T1071) | 20 %       |
-| Data Exfiltration (T1041)   | 15 %       |
-| Process Injection (T1055)   | 5 %        |
+Ein erfahrener Analyst bei einer Finanzinstitution detektiert ungewöhnliche DNS-Abfragen zu NX-Domains – ein Hinweis auf Exfiltration via DNS-Tunneling.  
+Mit der Hypothese *„Datenfluss über verschlüsselte DNS-Pakete“* und einer Analyse der Paketmetadaten (z. B. über Zeek) bestätigt er die Anomalie.  
+**Maßnahmen:** Netzwerksegmentierung, IOC-Extraktion und Update der DLP-Regeln.  
+**Ergebnis:** Angreifer isoliert, Datenverlust auf 0,1 % begrenzt, Lessons Learned ins Playbook integriert.
+
+## 📘 Die Essenz des Threat Hunting
+
+### Reaktiv vs. Proaktiv: Die Grenze überschreiten
+
+- **Reaktiv:** SIEM/IDS-Systeme wie Splunk oder QRadar erkennen nur bekannte Signaturen – ein Netz mit zu großen Maschen für APTs.
+- **Proaktiv:** Der Hunter sucht nach Anomalien wie untypischen Prozessaufrufen (z. B. `lsass.exe` mit atypischer Parent-Process-ID) oder irregulären Netzwerkflüssen.
+
+### Strategische Ansätze
+
+- **Hypothesengetrieben:**  
+  „Ein Angreifer exekutiert Mimikatz über RDP (T1078).“ – Gestützt auf Threat-Intel-Feeds wie OTX.
+- **Datengetrieben:**  
+  Statistische Modelle (z. B. Z-Score-Analyse) auf Logins um 03:14 Uhr mit Service-Konten, kombiniert mit Benford’s Law für Finanztransaktionen.
+
+💡 **Profi-Insight:**  
+Eine Hypothese ohne Datenbasis ist ein Schuss ins Blaue – validiere sie mit EDR-Telemetrie (z. B. CrowdStrike) und historischen Baselines.
 
 
+## 🛠️ Das Arsenal des Experten
 
-## Hunting-Playbook (Beispiel)
+<Table
+	data={{
+		headers: [
+			{ key: 'tool', content: 'Werkzeug' },
+			{ key: 'details', content: 'Anwendung und Tiefgang' },
+		],
+		rows: [
+			['**SIEM (Splunk)**', 'Korrelation von Windows-Events (EventID 4688) & NetFlow-Daten mit Custom Search Commands'],
+			['**XDR (CrowdStrike)**', 'Echtzeit-Überwachung von Endpoints & Cloud-APIs, inkl. Kernel-Level-Inspektion'],
+			['**Threat Intelligence**', 'Integration von STIX/TAXII-Feeds (MISP) für dynamische IOC-Updates'],
+			['**Forensik (Volatility)**', 'Speicheranalyse mit Plugins wie `malfind` für Rootkit-Erkennung'],
+			['**Emulation (CALDERA)**', 'Automatisierte Simulation von TTPs (z. B. T1059 – Command-Line-Execution)'],
+			['**YARA-Rules**', 'Benutzerdefinierte Signaturen für Zero-Day-Drohungen mit RegEx'],
+		],
+	}}
+/>
+
+
+💡 **Profi-Insight:**  
+Automatisiere YARA-Updates mit CI/CD-Pipelines und überprüfe sie gegen False Positives in Testumgebungen.
+
+
+## 🗺️ Der Threat-Hunting-Prozess: Ein Meisterwerk
+
+1️⃣ **Hypothese definieren**  
+*„Lateral Movement über SMB mit Pass-the-Hash (T1550.002).“*
+
+2️⃣ **Daten erheben**  
+Sysmon-Logs (EventID 3 für Netzwerkverbindungen), Proxy-Logs, EDR-Daten.
+
+3️⃣ **Analyse vertiefen**  
+Korrelation von Zeitstempeln mit Baseline-Abweichungen (z. B. +3σ in Netzwerk-Bytes).
+
+4️⃣ **Validierung festigen**  
+Sandbox-Tests mit Cuckoo, Peer-Review durch Red-Team.
+
+5️⃣ **Reaktion umsetzen**  
+Incident Response mit IOC-Sharing über MISP.
+
+💡 **Profi-Insight:**  
+Nutze Graph-Datenbanken (Neo4j) für visuelle TTP-Zuordnungen & Zeitachsenanalyse.
+
+
+## 📊 TTP-Landschaft 2025 (MITRE ATT&CK)
+
+<Table
+	data={{
+		headers: [
+			{ key: 'ttp', content: 'TTP' },
+			{ key: 'prevalence', content: 'Prävalenz' },
+			{ key: 'details', content: 'Technische Details' },
+		],
+		rows: [
+			['Credential Dumping (T1003)', '35 %', 'Mimikatz, LSASS-Dump, PowerSploit'],
+			['Lateral Movement (T1021)', '25 %', 'SMB-Relay, PS-Remoting, RDP'],
+			['Command and Control (T1071)', '20 %', 'DNS-Tunneling, HTTP-C2'],
+			['Data Exfiltration (T1041)', '15 %', 'ICMP, verschlüsselte ZIPs'],
+			['Process Injection (T1055)', '5 %', 'Reflective DLL, APC Injection'],
+		],
+	}}
+/>
+
+
+## 🔎 Erweiterte TTP-Analyse mit Fallbeispielen
+
+- **T1071 (Command and Control):**
+  Angreifer nutzt HTTP-C2 mit Base64-Befehlen.  
+  → Wireshark zeigt Header > 1500 Bytes.  
+  → Gegenmaßnahme: TLS-Inspektion, YARA für Base64-Muster.
+
+- **T1550.002 (Pass-the-Hash):**
+  Lateral Movement über SMB, erkannt durch atypische NTLM-Hashes.  
+  → Gegenmaßnahme: Kerberos-Zwang, Segmentierung.
+
+
+## 📜 Playbook: Automatisierte Jagd auf Lateral Movement
 
 ```yaml
-- name: Hunting for Credential Dumping
-  hypothesis: "Angreifer dumpen LSASS für Credentials"
-  steps:
-    - Monitor LSASS-Zugriffe (Sysmon EventID 10)
-    - Prüfe auf unübliche NTLM-Authentifizierungen
-    - YARA-Scan auf Memory Dumps
+name: Automatisierte Jagd auf Lateral Movement
+hypothesis: "Pass-the-Hash über SMB (T1550.002)"
+steps:
+  - Trigger: Sysmon EventID 3 mit atypischer Destination-IP.
+  - Aktion: Ansible-Playbook für Netzwerksegmentierung (firewall_rule: block_ip).
+  - Validierung: EDR-Bericht über blockierte Verbindungen.
+  - Benachrichtigung: Slack-Alert mit IOC-Details.
 ````
 
-##  KPIs für Erfolg im Hunting
-
-| Kennzahl                   | Zielwert   |
-| -------------------------- | ---------- |
-| Anomalien pro Woche        | > 5        |
-| MTTD (Mean Time To Detect) | < 24 h     |
-| False-Positive-Rate        | < 20 %     |
-| Playbook-Updates           | ≥ 1×/Monat |
+💡 **Profi-Insight:**
+Automatisiere mit SOAR-Tools wie Splunk SOAR.
+*Humor-Twist: „Lass die Maschinen den Impostor jagen, während du Kaffee holst!“*
 
 
-## Herausforderungen & Lösungen
+## ☁️ Threat Hunting in der Cloud
 
-| Herausforderung | Lösung                                |
-| --------------- | ------------------------------------- |
-| Datenflut       | Machine Learning (Elastic, Splunk ML) |
-| Skill-Gap       | Schulungen (SANS, TryHackMe)          |
-| Zeitmangel      | 2 h pro Woche fest einplanen          |
+* **Ansatz:** Überwache CloudTrail-Logs auf IAM-Role-Assumptions mit verdächtigen Source-IPs.
+* **Technik:**
 
-
-## Checkliste für Einsteiger
-
-✅ Hypothese aufstellen
-✅ Datenquellen identifizieren
-✅ Baseline definieren
-✅ Tools konfigurieren
-✅ Findings dokumentieren
+  ```sql
+  SELECT userIdentity, sourceIp 
+  FROM cloudtrail 
+  WHERE eventName='AssumeRole' 
+  AND sourceIp NOT IN ('10.0.0.0/8')
+  ```
+* **Gegenmaßnahme:** MFA erzwingen, CSPM-Tools einsetzen.
 
 
-## Literaturempfehlungen
+## 📏 Performance-Metriken für Profis
 
-* *Cyber Threat Hunting* (Madiran Alfordan, Manning)
-* SANS FOR508 Kurs
-* MITRE ATT\&CK Navigator Whitepaper
-* Talks von BlackHat & Defcon
+<Table
+	data={{
+		headers: [
+			{ key: 'metric', content: 'Kennzahl' },
+			{ key: 'target', content: 'Zielwert' },
+			{ key: 'method', content: 'Methode' },
+		],
+		rows: [
+			['Anomalien pro Woche', '> 10', 'Ausreißer-Erkennung'],
+			['MTTD (Mean Time To Detect)', '< 12 h', 'Echtzeit-EDR'],
+			['False-Positive-Rate', '< 10 %', 'ML-Validierung'],
+			['Playbook-Updates', '≥ 2×/Monat', 'Post-Incident-Review'],
+		],
+	}}
+/>
 
 
-## 🎮 Mini-Quiz: Bist du bereit?
+## ⚔️ Herausforderungen & Lösungen
 
-### Frage 1
+<Table
+	data={{
+		headers: [
+			{ key: 'challenge', content: 'Herausforderung' },
+			{ key: 'solution', content: 'Lösung' },
+		],
+		rows: [
+			['Datenflut', 'ELK-Stack + Anomaly Detection'],
+			['Komplexe TTPs', 'MITRE ATT&CK Navigator'],
+			['Ressourcenknappheit', 'Risiko-basiertes Priorisieren (CVSS)'],
+		],
+	}}
+/>
 
-Dein SIEM zeigt verdächtigen Traffic um 04:00 Uhr.
-a) Ignorieren
-b) Hypothese bilden & MITRE prüfen
-c) Server sofort herunterfahren
 
-### Frage 2
+## ✅ Rituale des Profis
 
-Du vermutest Lateral Movement über SMB. Welches Tool?
-a) Wireshark
-b) Photoshop
-c) Excel
+* Hypothese mit Threat-Intel validieren.
+* Datenquellen mit EDR & Netzwerk-Taps erweitern.
+* Dynamische Baselines mit ML pflegen.
+* Werkzeuge mit APIs integrieren.
+* Erkenntnisse in SOAR-Systeme einspeisen.
 
-### Frage 3
 
-Ein Prozess verhält sich verdächtig. Dein Vorgehen?
-a) RAM-Dump & YARA
-b) Task-Manager
-c) Ignorieren
+## 📚 Ressourcen für Experten
 
-**Antworten:**
-✅ 3/3: Cyber-Detektiv par excellence.
-🟨 2/3: Solide Basis, mehr Training!
-🟥 ≤ 1: Zeit für eine Hunting-Session.
+* *Cyber Threat Hunting*, Madiran Alfordan (Manning)
+* SANS FOR508: Advanced IR
+* MITRE ATT\&CK Framework
+* DEFCON-Talks & Whitepapers
+
+
+> **Schlussgedanke:**
+> Threat Hunting ist kein Spiel – es ist ein Duell mit den Besten. Mit präzisen Hypothesen, datengetriebener Analyse und einem Hauch Humor kannst du die Unsichtbaren besiegen. Fang an – dein Netzwerk zählt die Sekunden.
